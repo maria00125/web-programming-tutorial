@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Kitchen - Cat Cafe & Restaurant</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#F5ECE1',
+                        creamDark: '#EADBC8',
+                        burgundy: '#5C1D24',
+                        burgundyLight: '#7A2832',
+                        burgundyDark: '#3D1217',
+                        accentGold: '#D4A373'
+                    },
+                    fontFamily: {
+                        retro: ['Fredoka', 'sans-serif'],
+                        sans: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F5ECE1;
+            color: #3D1217;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .font-retro {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        /* Wavy frame container */
+        .wavy-border {
+            border: 6px solid #5C1D24;
+            border-radius: 40px 15px 45px 20px / 20px 40px 15px 45px;
+            box-shadow: 0 10px 25px rgba(92, 29, 36, 0.12);
+            position: relative;
+        }
+
+        /* SVG wave underline effect */
+        .wavy-underline {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='12' viewBox='0 0 100 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6Q12.5 0 25 6T50 6T75 6T100 6' stroke='%255C1D24' stroke-width='4' fill='none'/%3E%3C/svg%3E");
+            background-size: 60px 10px;
+            background-repeat: repeat-x;
+            background-position: bottom;
+            padding-bottom: 8px;
+        }
+
+        /* Hide scrollbars for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .pulse-subtle {
+            animation: pulseSubtle 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseSubtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24 md:pb-12 bg-cream text-burgundy selection:bg-burgundy selection:text-cream">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-burgundy text-cream text-center text-xs md:text-sm font-semibold py-2 px-4 shadow-sm flex items-center justify-center gap-2">
+        <span>🐾 Welcome to Artisan Kitchen! Freshly baked, brewed & cooked with love.</span>
+    </div>
+
+    <!-- Main Outer Container -->
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 py-6 md:py-10">
+        
+        <!-- Wavy Retro Menu Board -->
+        <div class="wavy-border bg-[#FAF3EC] p-4 sm:p-8 md:p-12 relative overflow-hidden">
+            
+            <!-- Floating Decorative Stars -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-20 hidden md:block">
+                <svg width="400" height="400" viewBox="0 0 200 200" fill="#5C1D24">
+                    <path d="M100 0 L103 80 L180 100 L103 120 L100 200 L97 120 L20 100 L97 80 Z"/>
+                </svg>
+            </div>
+
+            <!-- Header Section -->
+            <div class="text-center relative z-10 mb-8 sm:mb-12">
+                
+                <!-- Top Header Art Layout -->
+                <div class="flex items-center justify-between max-w-2xl mx-auto mb-2">
+                    
+                    <!-- Left Cat Illustration (Eating Pasta) -->
+                    <div class="w-20 h-20 sm:w-28 sm:h-28 relative flex-shrink-0">
+                        <svg viewBox="0 0 120 120" class="w-full h-full drop-shadow">
+                            <!-- Pasta Bowl -->
+                            <ellipse cx="60" cy="95" rx="35" ry="12" fill="#FAF3EC" stroke="#5C1D24" stroke-width="4"/>
+                            <path d="M 35 95 Q 60 115 85 95" fill="#5C1D24"/>
+                            <!-- Spaghetti yellow strands -->
+                            <path d="M 42 90 Q 50 82 60 90 T 78 88" stroke="#D4A373" stroke-width="5" fill="none"/>
+                            <!-- Black Cat eating -->
+                            <path d="M 50 80 Q 40 50 48 35 Q 55 30 65 35 Q 75 30 82 35 Q 90 50 80 80 Z" fill="#1A1A1A"/>
+                            <!-- Cat ears -->
+                            <polygon points="48,37 40,20 56,31" fill="#1A1A1A"/>
+                            <polygon points="82,37 90,20 74,31" fill="#1A1A1A"/>
+                            <polygon points="50,35 44,24 55,31" fill="#F5ECE1"/>
+                            <polygon points="80,35 86,24 75,31" fill="#F5ECE1"/>
+                            <!-- Cat eyes -->
+                            <circle cx="56" cy="45" r="3" fill="#FFFFFF"/>
+                            <circle cx="74" cy="45" r="3" fill="#FFFFFF"/>
+                            <!-- Fork with spaghetti -->
+                            <line x1="75" y1="55" x2="62" y2="85" stroke="#5C1D24" stroke-width="3"/>
+                        </svg>
+                    </div>
+
+                    <!-- Center Titles -->
+                    <div class="px-2">
+                        <p class="font-retro tracking-[0.25em] text-xs sm:text-sm md:text-base font-bold text-burgundy uppercase mb-1">
+                            A R T I S A N &nbsp; K I T C H E N
+                        </p>
+                        <h1 class="font-retro text-4xl sm:text-6xl md:text-7xl font-extrabold text-burgundy tracking-tight">
+                            MENU
+                        </h1>
+                    </div>
+
+                    <!-- Right Cat Illustration (In Coffee Cup) -->
+                    <div class="w-20 h-20 sm:w-28 sm:h-28 relative flex-shrink-0">
+                        <svg viewBox="0 0 120 120" class="w-full h-full drop-shadow">
+                            <!-- Coffee Mug -->
+                            <rect x="30" y="55" width="55" height="45" rx="10" fill="#FAF3EC" stroke="#5C1D24" stroke-width="4"/>
+                            <!-- Mug Handle -->
+                            <path d="M 85 65 C 100 65 100 90 85 90" fill="none" stroke="#5C1D24" stroke-width="4"/>
+                            <!-- Cat inside mug -->
+                            <path d="M 40 60 Q 35 30 45 25 Q 52 20 60 25 Q 68 20 75 25 Q 85 30 80 60 Z" fill="#1A1A1A"/>
+                            <!-- Ears -->
+                            <polygon points="43,26 36,10 50,22" fill="#1A1A1A"/>
+                            <polygon points="77,26 84,10 70,22" fill="#1A1A1A"/>
+                            <!-- Eyes -->
+                            <ellipse cx="50" cy="38" rx="4" ry="5" fill="#FFFFFF"/>
+                            <ellipse cx="70" cy="38" rx="4" ry="5" fill="#FFFFFF"/>
+                            <circle cx="51" cy="38" r="2" fill="#1A1A1A"/>
+                            <circle cx="69" cy="38" r="2" fill="#1A1A1A"/>
+                            <!-- Paws hanging -->
+                            <ellipse cx="43" cy="62" rx="5" ry="4" fill="#FFFFFF" stroke="#1A1A1A"/>
+                            <ellipse cx="77" cy="62" rx="5" ry="4" fill="#FFFFFF" stroke="#1A1A1A"/>
+                        </svg>
+                    </div>
+
+                </div>
+
+                <!-- Subtitle / Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-4">
+                    <button onclick="filterCategory('all')" class="cat-tab-btn active bg-burgundy text-cream px-4 py-1.5 rounded-full font-retro text-sm font-medium transition-all hover:opacity-90 shadow-sm">All Items</button>
+                    <button onclick="filterCategory('pasta')" class="cat-tab-btn bg-creamDark text-burgundy px-4 py-1.5 rounded-full font-retro text-sm font-medium transition-all hover:bg-burgundy hover:text-cream">Pasta</button>
+                    <button onclick="filterCategory('starters')" class="cat-tab-btn bg-creamDark text-burgundy px-4 py-1.5 rounded-full font-retro text-sm font-medium transition-all hover:bg-burgundy hover:text-cream">Starters & Soups</button>
+                    <button onclick="filterCategory('desserts')" class="cat-tab-btn bg-creamDark text-burgundy px-4 py-1.5 rounded-full font-retro text-sm font-medium transition-all hover:bg-burgundy hover:text-cream">Desserts</button>
+                    <button onclick="filterCategory('drinks')" class="cat-tab-btn bg-creamDark text-burgundy px-4 py-1.5 rounded-full font-retro text-sm font-medium transition-all hover:bg-burgundy hover:text-cream">Coffee & Drinks</button>
+                </div>
+            </div>
+
+            <!-- MENU GRID (2 COLUMNS matching image) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 relative z-10">
+
+                <!-- CATEGORY 1: PASTA -->
+                <div class="menu-section" data-category="pasta">
+                    <div class="mb-6">
+                        <h2 class="font-retro text-2xl sm:text-3xl font-bold text-burgundy tracking-wide inline-block wavy-underline">
+                            PASTA
+                        </h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Item 1 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    GATTO SPAGHETTI
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$11.50</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Classic spaghetti with tomato sauce, basil and parmesan.</p>
+                            <!-- Controls -->
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60 flex items-center gap-1">🍝 Chef Special</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="pasta-1" data-name="Gatto Spaghetti" data-price="11.50">
+                                    <button onclick="changeQty('pasta-1', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('pasta-1', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    CREAMY MICIO PASTA
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$12.00</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Silky cream sauce with grated parmesan.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🧀 Creamy & Rich</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="pasta-2" data-name="Creamy Micio Pasta" data-price="12.00">
+                                    <button onclick="changeQty('pasta-2', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('pasta-2', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    GARLIC BUTTER SPAGHETTI
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$10.00</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Simple pasta tossed in garlic-infused butter and herbs.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🧄 Herb Garlic</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="pasta-3" data-name="Garlic Butter Spaghetti" data-price="10.00">
+                                    <button onclick="changeQty('pasta-3', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('pasta-3', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 2: STARTERS & SOUPS -->
+                <div class="menu-section" data-category="starters">
+                    <div class="mb-6">
+                        <h2 class="font-retro text-2xl sm:text-3xl font-bold text-burgundy tracking-wide inline-block wavy-underline">
+                            STARTERS & SOUPS
+                        </h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Item 1 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    GATTO BOWL SOUP
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$6.50</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Warm creamy soup served with a slice of soft bread.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🥣 Warm & Comforting</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="starter-1" data-name="Gatto Bowl Soup" data-price="6.50">
+                                    <button onclick="changeQty('starter-1', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('starter-1', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    CIABATTA & CHEESE MELT
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$7.00</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Toasted ciabatta with melted cheese and herbs.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🍞 Freshly Baked</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="starter-2" data-name="Ciabatta & Cheese Melt" data-price="7.00">
+                                    <button onclick="changeQty('starter-2', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('starter-2', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    MINI BRUSCHETTA DUO
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$5.50</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Two toasted slices topped with tomato and basil.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🍅 Fresh Tomato</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="starter-3" data-name="Mini Bruschetta Duo" data-price="5.50">
+                                    <button onclick="changeQty('starter-3', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('starter-3', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 3: DESSERTS -->
+                <div class="menu-section" data-category="desserts">
+                    <div class="mb-6">
+                        <h2 class="font-retro text-2xl sm:text-3xl font-bold text-burgundy tracking-wide inline-block wavy-underline">
+                            DESSERTS
+                        </h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Item 1 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    GATTO GELATO
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$2.80</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">One scoop of vanilla, chocolate or pistachio.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🍨 Artisanal Gelato</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="dessert-1" data-name="Gatto Gelato" data-price="2.80">
+                                    <button onclick="changeQty('dessert-1', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('dessert-1', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    DOUBLE SCOOP GELATO
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$3.60</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Two scoops, any flavors.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🍧 Double Delight</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="dessert-2" data-name="Double Scoop Gelato" data-price="3.60">
+                                    <button onclick="changeQty('dessert-2', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('dessert-2', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    MICIO WAFFLE
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$4.00</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Warm waffle with chocolate or caramel drizzle.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🧇 Warm Waffle</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="dessert-3" data-name="Micio Waffle" data-price="4.00">
+                                    <button onclick="changeQty('dessert-3', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('dessert-3', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    SWEET CAT CUP
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$3.00</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Vanilla cream layered with cookie crumbs.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🍪 Cookie Crumble</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="dessert-4" data-name="Sweet Cat Cup" data-price="3.00">
+                                    <button onclick="changeQty('dessert-4', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('dessert-4', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 4: COFFEE & DRINKS -->
+                <div class="menu-section" data-category="drinks">
+                    <div class="mb-6">
+                        <h2 class="font-retro text-2xl sm:text-3xl font-bold text-burgundy tracking-wide inline-block wavy-underline">
+                            COFFEE & DRINKS
+                        </h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Item 1 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    ESPRESSO GATTO
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$2.80</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Strong Italian espresso.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">☕ Italian Roast</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="drink-1" data-name="Espresso Gatto" data-price="2.80">
+                                    <button onclick="changeQty('drink-1', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('drink-1', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    CAPPUCCINO MICIO
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$3.00</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Smooth cappuccino with soft foam.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🧼 Extra Foam</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="drink-2" data-name="Cappuccino Micio" data-price="3.00">
+                                    <button onclick="changeQty('drink-2', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('drink-2', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    LATTE PAWS
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$4.00</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Warm, creamy milk latte.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🐾 Cute Paw Art</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="drink-3" data-name="Latte Paws" data-price="4.00">
+                                    <button onclick="changeQty('drink-3', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('drink-3', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="menu-item group bg-white/40 hover:bg-white/80 p-3.5 rounded-2xl transition-all duration-200 border border-transparent hover:border-burgundy/20">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-retro text-lg sm:text-xl font-bold text-burgundy tracking-wide group-hover:text-burgundyLight">
+                                    ICED COFFEE
+                                </h3>
+                                <span class="font-retro text-lg font-extrabold text-burgundy ml-2">$4.50</span>
+                            </div>
+                            <p class="text-sm text-burgundy/80 mt-1 font-medium leading-relaxed">Cold brew served black or with milk.</p>
+                            <div class="mt-3 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-burgundy/60">🧊 Refreshing Cold Brew</span>
+                                <div class="item-counter flex items-center bg-cream border border-burgundy/30 rounded-full overflow-hidden shadow-sm" data-id="drink-4" data-name="Iced Coffee" data-price="4.50">
+                                    <button onclick="changeQty('drink-4', -1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">-</button>
+                                    <span class="qty-display w-7 text-center font-retro text-sm font-bold text-burgundy">0</span>
+                                    <button onclick="changeQty('drink-4', 1)" class="w-8 h-8 font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors flex items-center justify-center">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Center Cat Illustration (Holding Ice Cream Cone) -->
+            <div class="mt-12 text-center flex justify-center relative z-10">
+                <div class="w-28 h-40 relative">
+                    <svg viewBox="0 0 100 150" class="w-full h-full drop-shadow-md">
+                        <!-- Ice Cream Scoops -->
+                        <circle cx="50" cy="35" r="14" fill="#FFFFFF" stroke="#5C1D24" stroke-width="3"/>
+                        <circle cx="50" cy="22" r="12" fill="#FAF3EC" stroke="#5C1D24" stroke-width="3"/>
+                        <circle cx="50" cy="12" r="9" fill="#5C1D24"/>
+                        <!-- Cone -->
+                        <polygon points="36,45 64,45 50,85" fill="#D4A373" stroke="#5C1D24" stroke-width="3"/>
+                        <line x1="42" y1="52" x2="55" y2="72" stroke="#5C1D24" stroke-width="1.5"/>
+                        <line x1="58" y1="52" x2="45" y2="72" stroke="#5C1D24" stroke-width="1.5"/>
+                        <!-- Black Cat Body stretching up -->
+                        <path d="M 40 80 L 40 140 Q 50 148 60 140 L 60 80 Z" fill="#1A1A1A"/>
+                        <!-- Cat Head -->
+                        <circle cx="50" cy="90" r="18" fill="#1A1A1A"/>
+                        <!-- Ears -->
+                        <polygon points="35,82 28,68 42,76" fill="#1A1A1A"/>
+                        <polygon points="65,82 72,68 58,76" fill="#1A1A1A"/>
+                        <!-- Eyes looking up -->
+                        <ellipse cx="43" cy="88" rx="3.5" ry="4.5" fill="#FFFFFF"/>
+                        <ellipse cx="57" cy="88" rx="3.5" ry="4.5" fill="#FFFFFF"/>
+                        <circle cx="43" cy="86" r="2" fill="#1A1A1A"/>
+                        <circle cx="57" cy="86" r="2" fill="#1A1A1A"/>
+                        <!-- Paws holding cone -->
+                        <ellipse cx="38" cy="65" rx="4" ry="6" fill="#FFFFFF" stroke="#1A1A1A"/>
+                        <ellipse cx="62" cy="65" rx="4" ry="6" fill="#FFFFFF" stroke="#1A1A1A"/>
+                        <!-- Feet at bottom -->
+                        <ellipse cx="40" cy="142" rx="5" ry="4" fill="#FFFFFF"/>
+                        <ellipse cx="60" cy="142" rx="5" ry="4" fill="#FFFFFF"/>
+                        <!-- Tail -->
+                        <path d="M 60 135 C 80 135 80 110 75 105" fill="none" stroke="#1A1A1A" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FLOATING CART BUTTON (Mobile & Quick Access) -->
+    <div id="floating-cart-btn" class="fixed bottom-5 right-5 z-40">
+        <button onclick="toggleCartDrawer()" class="bg-burgundy text-cream font-retro flex items-center gap-3 px-5 py-3.5 rounded-full shadow-2xl hover:bg-burgundyLight transition-all pulse-subtle border-2 border-cream">
+            <span class="text-xl">🛒</span>
+            <span class="font-bold">Your Order</span>
+            <span id="cart-badge-count" class="bg-cream text-burgundy font-black text-xs px-2.5 py-1 rounded-full">0</span>
+            <span id="cart-badge-total" class="font-extrabold text-accentGold ml-1">$0.00</span>
+        </button>
+    </div>
+
+    <!-- CART SIDE DRAWER / OVERLAY -->
+    <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCartDrawer()"></div>
+    
+    <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-[#FAF3EC] z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col border-l-4 border-burgundy">
+        
+        <!-- Drawer Header -->
+        <div class="p-5 bg-burgundy text-cream flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🐱</span>
+                <h2 class="font-retro text-2xl font-bold">Your Order Summary</h2>
+            </div>
+            <button onclick="toggleCartDrawer()" class="text-cream/80 hover:text-cream text-2xl font-bold p-1">&times;</button>
+        </div>
+
+        <!-- Order Items List -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-4 no-scrollbar">
+            <!-- Empty state -->
+            <div id="cart-empty-msg" class="text-center py-12 text-burgundy/60 space-y-3">
+                <div class="text-5xl">🐾</div>
+                <p class="font-retro text-lg font-semibold">Your tray is empty!</p>
+                <p class="text-xs">Add delicious items from our menu to start your order.</p>
+            </div>
+            <!-- Dynamic Cart Items Render Here -->
+        </div>
+
+        <!-- Order Calculations & Form -->
+        <div class="p-5 bg-cream border-t border-burgundy/20 space-y-4">
+            
+            <!-- Tip Selection -->
+            <div>
+                <label class="block text-xs font-bold text-burgundy uppercase mb-1.5">Add a Tip for the Cat Staff 🐾</label>
+                <div class="grid grid-cols-4 gap-2">
+                    <button onclick="setTip(0)" class="tip-btn border border-burgundy/30 py-1 rounded-lg text-xs font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-all active" data-tip="0">None</button>
+                    <button onclick="setTip(10)" class="tip-btn border border-burgundy/30 py-1 rounded-lg text-xs font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-all" data-tip="10">10%</button>
+                    <button onclick="setTip(15)" class="tip-btn border border-burgundy/30 py-1 rounded-lg text-xs font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-all" data-tip="15">15%</button>
+                    <button onclick="setTip(20)" class="tip-btn border border-burgundy/30 py-1 rounded-lg text-xs font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-all" data-tip="20">20%</button>
+                </div>
+            </div>
+
+            <!-- Price Breakdown -->
+            <div class="space-y-1.5 text-sm text-burgundy border-t border-b border-burgundy/10 py-3">
+                <div class="flex justify-between">
+                    <span class="font-medium">Subtotal</span>
+                    <span id="summary-subtotal" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-medium">Tax (8%)</span>
+                    <span id="summary-tax" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-medium">Tip</span>
+                    <span id="summary-tip" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between text-base font-retro font-extrabold text-burgundy pt-1">
+                    <span>Grand Total</span>
+                    <span id="summary-total" class="text-xl font-black text-burgundy">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Customer Details Inputs -->
+            <div class="space-y-2">
+                <div>
+                    <input type="text" id="cust-name" placeholder="Your Name" class="w-full text-sm px-3 py-2 rounded-xl border border-burgundy/30 bg-white focus:outline-none focus:ring-2 focus:ring-burgundy">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <select id="order-type" onchange="toggleTableInput()" class="text-sm px-3 py-2 rounded-xl border border-burgundy/30 bg-white focus:outline-none focus:ring-2 focus:ring-burgundy font-medium text-burgundy">
+                        <option value="Dine-in">Dine-in 🍽️</option>
+                        <option value="Takeaway">Takeaway 🛍️</option>
+                    </select>
+                    <input type="text" id="table-no" placeholder="Table No. (e.g. 5)" class="text-sm px-3 py-2 rounded-xl border border-burgundy/30 bg-white focus:outline-none focus:ring-2 focus:ring-burgundy">
+                </div>
+                <div>
+                    <input type="text" id="cust-notes" placeholder="Special requests or dietary needs..." class="w-full text-sm px-3 py-2 rounded-xl border border-burgundy/30 bg-white focus:outline-none focus:ring-2 focus:ring-burgundy">
+                </div>
+            </div>
+
+            <!-- Submit Order Button -->
+            <button onclick="submitOrder()" id="checkout-btn" disabled class="w-full bg-burgundy hover:bg-burgundyLight disabled:opacity-50 text-cream font-retro py-3.5 rounded-2xl font-bold text-lg shadow-md transition-all flex items-center justify-center gap-2">
+                <span>Place Request</span>
+                <span>✨</span>
+            </button>
+
+        </div>
+    </div>
+
+    <!-- ORDER CONFIRMATION MODAL -->
+    <div id="confirm-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-[#FAF3EC] w-full max-w-lg rounded-3xl p-6 sm:p-8 border-4 border-burgundy shadow-2xl relative transform scale-95 transition-transform duration-300" id="confirm-modal-box">
+            
+            <div class="text-center space-y-2">
+                <div class="inline-block p-3 bg-cream rounded-full border-2 border-burgundy mb-1">
+                    <span class="text-4xl">🐱🎉</span>
+                </div>
+                <h3 class="font-retro text-2xl sm:text-3xl font-extrabold text-burgundy">Order Received!</h3>
+                <p class="text-xs sm:text-sm text-burgundy/80 font-medium">Thank you! Our artisan chefs and cats are preparing your order.</p>
+            </div>
+
+            <!-- Receipt Card -->
+            <div class="bg-white/80 border border-burgundy/20 rounded-2xl p-4 my-4 space-y-3 max-h-60 overflow-y-auto no-scrollbar">
+                <div class="flex justify-between items-center text-xs font-bold text-burgundy/60 border-b pb-2">
+                    <span id="receipt-order-id">Order #8492</span>
+                    <span id="receipt-type-table">Dine-in • Table 4</span>
+                </div>
+                <div id="receipt-items-list" class="space-y-1.5 text-sm text-burgundy">
+                    <!-- Dynamic receipt rows -->
+                </div>
+                <div class="border-t pt-2 space-y-1 text-xs text-burgundy font-semibold">
+                    <div class="flex justify-between">
+                        <span>Subtotal</span>
+                        <span id="receipt-subtotal">$0.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Tax & Tip</span>
+                        <span id="receipt-tax-tip">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-bold text-burgundy pt-1 border-t">
+                        <span>Total Paid</span>
+                        <span id="receipt-total" class="text-base font-extrabold">$0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-creamDark/60 p-3 rounded-xl text-center text-xs font-semibold text-burgundy mb-5">
+                ⏱️ Estimated preparation time: <span class="font-extrabold text-burgundyLight">15-20 mins</span>
+            </div>
+
+            <button onclick="closeConfirmModal()" class="w-full bg-burgundy text-cream font-retro font-bold py-3 rounded-2xl text-base hover:bg-burgundyLight transition-colors">
+                Close & Return to Menu 🐾
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // State Store
+        const state = {
+            cart: {}, // { itemId: { id, name, price, qty } }
+            tipPercent: 0,
+            taxRate: 0.08
+        };
+
+        // Filter Categories
+        function filterCategory(cat) {
+            const sections = document.querySelectorAll('.menu-section');
+            const tabBtns = document.querySelectorAll('.cat-tab-btn');
+
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active', 'bg-burgundy', 'text-cream');
+                btn.classList.add('bg-creamDark', 'text-burgundy');
+            });
+
+            // Set active tab styling
+            event.target.classList.add('active', 'bg-burgundy', 'text-cream');
+            event.target.classList.remove('bg-creamDark', 'text-burgundy');
+
+            sections.forEach(sec => {
+                if (cat === 'all' || sec.dataset.category === cat) {
+                    sec.style.display = 'block';
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
+        }
+
+        // Change Item Quantity
+        function changeQty(id, delta) {
+            const counterEl = document.querySelector(`[data-id="${id}"]`);
+            if (!counterEl) return;
+
+            const name = counterEl.dataset.name;
+            const price = parseFloat(counterEl.dataset.price);
+
+            if (!state.cart[id]) {
+                state.cart[id] = { id, name, price, qty: 0 };
+            }
+
+            state.cart[id].qty += delta;
+
+            if (state.cart[id].qty <= 0) {
+                delete state.cart[id];
+            }
+
+            updateUI();
+        }
+
+        // Set Tip Percentage
+        function setTip(percent) {
+            state.tipPercent = percent;
+            document.querySelectorAll('.tip-btn').forEach(btn => {
+                if (parseInt(btn.dataset.tip) === percent) {
+                    btn.classList.add('bg-burgundy', 'text-cream');
+                    btn.classList.remove('bg-transparent');
+                } else {
+                    btn.classList.remove('bg-burgundy', 'text-cream');
+                }
+            });
+            updateCalculations();
+        }
+
+        // Toggle Table input based on Dine-in / Takeaway
+        function toggleTableInput() {
+            const type = document.getElementById('order-type').value;
+            const tableInput = document.getElementById('table-no');
+            if (type === 'Takeaway') {
+                tableInput.style.display = 'none';
+            } else {
+                tableInput.style.display = 'block';
+            }
+        }
+
+        // Update overall UI elements
+        function updateUI() {
+            // Update quantity display on menu cards
+            document.querySelectorAll('.item-counter').forEach(el => {
+                const id = el.dataset.id;
+                const qtySpan = el.querySelector('.qty-display');
+                const qty = state.cart[id] ? state.cart[id].qty : 0;
+                qtySpan.textContent = qty;
+            });
+
+            // Render Cart Items
+            const container = document.getElementById('cart-items-container');
+            const emptyMsg = document.getElementById('cart-empty-msg');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            const cartKeys = Object.keys(state.cart);
+            let totalItemCount = 0;
+
+            if (cartKeys.length === 0) {
+                emptyMsg.style.display = 'block';
+                checkoutBtn.disabled = true;
+                container.innerHTML = '';
+                container.appendChild(emptyMsg);
+            } else {
+                emptyMsg.style.display = 'none';
+                checkoutBtn.disabled = false;
+                
+                let html = '';
+                cartKeys.forEach(key => {
+                    const item = state.cart[key];
+                    totalItemCount += item.qty;
+                    const itemTotal = (item.price * item.qty).toFixed(2);
+                    html += `
+                        <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-burgundy/10 shadow-sm">
+                            <div class="flex-1 pr-2">
+                                <h4 class="font-retro font-bold text-burgundy text-sm">${item.name}</h4>
+                                <span class="text-xs text-burgundy/60 font-medium">$${item.price.toFixed(2)} each</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="flex items-center bg-cream border border-burgundy/30 rounded-lg overflow-hidden">
+                                    <button onclick="changeQty('${item.id}', -1)" class="w-6 h-6 text-xs font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors">-</button>
+                                    <span class="w-5 text-center font-retro text-xs font-bold text-burgundy">${item.qty}</span>
+                                    <button onclick="changeQty('${item.id}', 1)" class="w-6 h-6 text-xs font-bold text-burgundy hover:bg-burgundy hover:text-cream transition-colors">+</button>
+                                </div>
+                                <span class="font-retro font-extrabold text-sm text-burgundy min-w-[50px] text-right">$${itemTotal}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            }
+
+            // Update badge counts
+            document.getElementById('cart-badge-count').textContent = totalItemCount;
+
+            updateCalculations();
+        }
+
+        // Calculate Totals
+        function updateCalculations() {
+            let subtotal = 0;
+            Object.values(state.cart).forEach(item => {
+                subtotal += item.price * item.qty;
+            });
+
+            const tax = subtotal * state.taxRate;
+            const tip = subtotal * (state.tipPercent / 100);
+            const grandTotal = subtotal + tax + tip;
+
+            document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('summary-tip').textContent = `$${tip.toFixed(2)}`;
+            document.getElementById('summary-total').textContent = `$${grandTotal.toFixed(2)}`;
+            document.getElementById('cart-badge-total').textContent = `$${grandTotal.toFixed(2)}`;
+        }
+
+        // Toggle Drawer
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-drawer-backdrop');
+
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Submit Order & Open Modal
+        function submitOrder() {
+            const custName = document.getElementById('cust-name').value.trim() || 'Guest';
+            const orderType = document.getElementById('order-type').value;
+            const tableNo = document.getElementById('table-no').value.trim();
+
+            // Receipt populate
+            const randomOrderId = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('receipt-order-id').textContent = `Order #${randomOrderId} • ${custName}`;
+            
+            if (orderType === 'Dine-in') {
+                document.getElementById('receipt-type-table').textContent = `Dine-in ${tableNo ? '• Table ' + tableNo : ''}`;
+            } else {
+                document.getElementById('receipt-type-table').textContent = `Takeaway 🛍️`;
+            }
+
+            let receiptItemsHtml = '';
+            let subtotal = 0;
+            Object.values(state.cart).forEach(item => {
+                const lineTotal = item.price * item.qty;
+                subtotal += lineTotal;
+                receiptItemsHtml += `
+                    <div class="flex justify-between">
+                        <span>${item.qty}x ${item.name}</span>
+                        <span class="font-bold">$${lineTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            const tax = subtotal * state.taxRate;
+            const tip = subtotal * (state.tipPercent / 100);
+            const total = subtotal + tax + tip;
+
+            document.getElementById('receipt-items-list').innerHTML = receiptItemsHtml;
+            document.getElementById('receipt-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('receipt-tax-tip').textContent = `$${(tax + tip).toFixed(2)}`;
+            document.getElementById('receipt-total').textContent = `$${total.toFixed(2)}`;
+
+            // Show confirmation modal
+            const modal = document.getElementById('confirm-modal');
+            const modalBox = document.getElementById('confirm-modal-box');
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalBox.classList.remove('scale-95');
+            modalBox.classList.add('scale-100');
+
+            // Close cart drawer
+            toggleCartDrawer();
+        }
+
+        // Close Confirm Modal & Reset
+        function closeConfirmModal() {
+            const modal = document.getElementById('confirm-modal');
+            const modalBox = document.getElementById('confirm-modal-box');
+
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+
+            // Reset state
+            state.cart = {};
+            state.tipPercent = 0;
+            document.getElementById('cust-name').value = '';
+            document.getElementById('table-no').value = '';
+            document.getElementById('cust-notes').value = '';
+            setTip(0);
+            updateUI();
+        }
+
+        // Initialize UI on Load
+        window.onload = function() {
+            updateUI();
+        }
+    </script>
+</body>
+</html>
