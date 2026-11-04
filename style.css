@@ -1,0 +1,33 @@
+body {
+ background-image: url('polkadot.png');
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center;
+ background-attachment: fixed;
+}
+
+h1 {
+  color: lightblue;
+  text-align: center;
+}
+
+h2 {
+  color: darked;
+  text-align: center;
+}
+label {
+   color: lightblue;
+   front-weight: bold;
+   font-size:1.5rem;
+   font-weight: bold;
+}
+p {
+  background-color: lavender;
+  color:lightblue;
+  font-size:1.5rem;
+  padding: 9px;
+  font-weight: bold;
+  text-align: center
+
+
+}
